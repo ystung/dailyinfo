@@ -1,0 +1,41 @@
+sites:
+  - name: Site-1
+    criticality: high
+    maintenance_window: "Sat 22:00-02:00"
+    change_freeze_windows: []
+    dependencies: [network, storage, app]
+
+  - name: Site-2
+    criticality: high
+    maintenance_window: "Sun 00:00-04:00"
+    change_freeze_windows: []
+    dependencies: [network, storage, app]
+
+  - name: Site-3
+    criticality: medium
+    maintenance_window: "Sat 20:00-23:00"
+    change_freeze_windows: []
+    dependencies: [network, app]
+
+  - name: Site-4
+    criticality: medium
+    maintenance_window: "Sun 01:00-03:00"
+    change_freeze_windows: []
+    dependencies: [network, storage]
+
+  - name: Site-5
+    criticality: low
+    maintenance_window: "Sun 02:00-05:00"
+    change_freeze_windows: []
+    dependencies: [network]
+
+priority_policy:
+  P1:
+    description: "正在被利用 / 影響控制平面 / 影響多廠區核心服務"
+    sla: "24h"
+  P2:
+    description: "高風險但可安排在 72 小時內處理"
+    sla: "72h"
+  P3:
+    description: "一般維護排程納入即可"
+    sla: "next_maintenance_cycle"
